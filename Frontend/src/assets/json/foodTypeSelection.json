@@ -1,0 +1,12 @@
+{
+    "foodType":[
+        {
+            "id": 1,
+            "type": "Jain"
+        },
+        {
+            "id": 2,
+            "type": "Regular"
+        }
+    ]
+}
