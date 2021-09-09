@@ -1,0 +1,28 @@
+{
+    "colleges": [
+        {
+            "id": 1,
+            "name": "SVIT, Vasad"
+        }, 
+        {
+            "id": 2,
+            "name": "GCET, Bakrol"
+        },
+        {
+            "id": 3,
+            "name": "MBIT, Karamsad"
+        },
+        {
+            "id": 4,
+            "name": "BVM, V.V Nagar"
+        },
+        {
+            "id": 5,
+            "name": "SPEC, Bakrol"
+        },
+        {
+            "id": 6,
+            "name": "ILSAS, V.V Nagar"
+        }
+    ]
+}

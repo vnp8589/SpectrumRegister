@@ -1,0 +1,172 @@
+<div class="row justify-content-md-center">
+    <div class="col-md-6 col-md-offset-3 col-lg-offset-3 col-xl-offset-3">
+        <div class="card">
+            <div class="card-header">
+                <strong>Registration Form</strong>
+            </div>
+            <div class="card-body">
+                <form [formGroup]="registrationForm" (ngSubmit)="register()">
+                    <!-- Email Field -->
+                    <div class="form-group row">
+                        <label class="col-md-3 col-form-label" for="text-input">Email</label>
+                        <div class="col-md-9">
+                            <input type="text" class="form-control"
+                                placeholder="Email"
+                                formControlName="email" required>
+                        </div>
+
+                        <div class="error-message"
+                            *ngIf="registrationForm.get('email').invalid &&
+                            registrationForm.get('email').errors &&
+                            (registrationForm.get('email').dirty ||
+                            registrationForm.get('email').touched)">
+                            <small class="text-danger"
+                                *ngIf="registrationForm.get('email').hasError('required')">
+                                Email is required
+                            </small>
+                            <small class="text-danger"
+                                *ngIf="registrationForm.get('email').hasError('email')">
+                                Email should be in proper format
+                            </small>
+                        </div>
+                    </div>
+
+                    <!-- First Name -->
+
+                    <div class="form-group row">
+                        <label class="col-md-3 col-form-label" for="text-input">First Name</label>
+                        <div class="col-md-9">
+                            <input type="text" class="form-control"
+                                placeholder="First Name"
+                                formControlName="firstName" required>
+                        </div>
+
+                        <div class="error-message"
+                            *ngIf="registrationForm.get('firstName').invalid &&
+                            registrationForm.get('firstName').errors &&
+                            (registrationForm.get('firstName').dirty ||
+                            registrationForm.get('firstName').touched)">
+                            <small class="text-danger"
+                                *ngIf="registrationForm.get('firstName').hasError('required')">
+                                First Name is required
+                            </small>
+                            <small class="text-danger"
+                                *ngIf="registrationForm.get('firstName').hasError('pattern')">
+                                Firstname should contain characters only
+                            </small>
+                        </div>
+                    </div>
+
+                      <!-- Last Name -->
+
+                      <div class="form-group row">
+                        <label class="col-md-3 col-form-label" for="text-input">Last Name</label>
+                        <div class="col-md-9">
+                            <input type="text" class="form-control"
+                                placeholder="Last Name"
+                                formControlName="lastName" required>
+                        </div>
+
+                        <div class="error-message"
+                            *ngIf="registrationForm.get('lastName').invalid &&
+                            registrationForm.get('lastName').errors &&
+                            (registrationForm.get('lastName').dirty ||
+                            registrationForm.get('lastName').touched)">
+                            <small class="text-danger"
+                                *ngIf="registrationForm.get('lastName').hasError('required')">
+                                Last Name is required
+                            </small>
+                            <small class="text-danger"
+                                *ngIf="registrationForm.get('lastName').hasError('pattern')">
+                                Last Name should contain characters only
+                            </small>
+                        </div>
+                    </div>
+
+                    <!-- Food -->
+                    <div class="form-group row">
+                        <label class="col-md-3 col-form-label" for="select1">Food</label>
+                        <div class="col-md-9">
+                        <label class="switch switch-pill switch-primary">
+                            <input type="checkbox" class="switch-input" (change)="switchChange($event)" ng-model="show" [value] = 200>
+                            <span class="switch-slider"></span>
+                          </label>
+                          <p><small>Food Charges: 200Rs</small></p>
+                        </div>
+                    </div>
+
+                    <!-- Food Type -->
+                    <div *ngIf="show" id="divshow">
+                        <div class="form-group row">
+                            <label class="col-md-3 col-form-label" for="select1">Food Type</label>
+                            <div class="col-md-9">
+                                <select id="foodType" name="select1"
+                                    class="form-control" (change)="updateFood($event)">
+                                    <option value="default">Select Food</option>
+                                    <option *ngFor = "let food of foodType" [value] = food.type>{{ food.type }}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                     <!-- Total -->
+
+                     <div class="form-group row">
+                        <label class="col-md-3 col-form-label" for="text-input">Total</label>
+                        <div class="col-md-9">
+                            <input type="number" class="form-control"
+                                formControlName="total" ng-readonly="false" id="totalValue" value="{{ this.total }}">
+                        </div>
+
+                    </div>
+
+                    <!-- Colleges -->
+
+                    <div class="form-group row">
+                        <label class="col-md-3 col-form-label" for="select1">Colleges</label>
+                        <div class="col-md-9">
+                            <select id="foodType" name="select1"
+                                class="form-control" (change)="updateCollege($event)">
+                                <option value="default">Select College</option>
+                                <option *ngFor = "let college of colleges" [value] = college.name>{{ college.name }}</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Contact -->
+
+                    <div class="form-group row">
+                        <label class="col-md-3 col-form-label" for="text-input">Contact</label>
+                        <div class="col-md-9">
+                            <input type="text" class="form-control"
+                                placeholder="Contact Number"
+                                formControlName="contact" required>
+                        </div>
+
+                        <div class="error-message"
+                            *ngIf="registrationForm.get('contact').invalid &&
+                            registrationForm.get('contact').errors &&
+                            (registrationForm.get('contact').dirty ||
+                            registrationForm.get('contact').touched)">
+                            <small class="text-danger"
+                                *ngIf="registrationForm.get('contact').hasError('required')">
+                                Contact Number is required
+                            </small>
+                            <small class="text-danger"
+                                *ngIf="registrationForm.get('contact').hasError('pattern')">
+                                Contact Number should contain 10 digits only and it should start with + followed by country code
+                            </small>
+                        </div>
+                    </div>
+
+                    <div class="card-footer">
+                        <button type="submit" class="btn btn-sm btn-primary submit-button-allignment" [disabled]="!registrationForm.valid"><i
+                                class="fa fa-dot-circle-o"></i> Submit</button>
+                    </div>
+                   
+                </form>
+            </div>
+           
+        </div>
+    </div>
+</div>
